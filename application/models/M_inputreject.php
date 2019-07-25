@@ -6,7 +6,8 @@ class M_inputreject extends CI_Model{
 	function read($docentry) {
 		// $query = $this->db->query("SELECT * from STEM_MOBILE_SHOPFLOORLINESREJECT where docentry = '$docentry'");
 
-		$query = $this->db->query("SELECT * FROM IPP_MOBILE_SHOPFLOORDETAIL2 where docentry = '$docentry'");
+		// $query = $this->db->query("SELECT * FROM IPP_MOBILE_SHOPFLOORDETAIL2 where docentry = '$docentry'");
+		 $query = $this->db->query("SELECT * FROM IPP_MOBILE_SHOPFLOORDETAIL2 where docentry = '$docentry'");
 
 		return $query->result_array();
 	}
