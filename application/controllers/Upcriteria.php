@@ -36,10 +36,10 @@ class Upcriteria extends REST_Controller {
 		$data = [
 			'docEntry' =>$this->post('docEntry'),
 			// 'lineNumber' =>$this->post('lineNumber'),
-			// 'criteria' =>$this->post('criteria'),
+			'criteria' =>$this->post('criteria'),
 			// 'criteriaDesc'=>$this->post('criteriaDesc'),
-			// 'valueType' =>$this->post('valueType'),
-			// 'standard' =>$this->post('standard'),
+			'valueType' =>$this->post('valueType'),
+			'standard' =>$this->post('standard'),
 			'actualResult'=>$this->post('actualResult'),
 			// 'actualRemarks'=>$this->post('actualRemarks')
 		];

@@ -8,7 +8,7 @@ function read($workCenter) {
 	// $this->db->where('docEntry', '138');
 	// return $this->db->get('STEM_MOBILE_SHOPFLOORHEADER')->result_array();
 		// $this->db->where("status", "0" and "workCenter", "$workCenter");
-		$query = $this->db->query("SELECT * FROM IPP_MOBILE_SHOPFLOORHEADER WHERE status = '0' AND workCenter = '$workCenter'" );
+		$query = $this->db->query("SELECT * FROM IPP_MOBILE_SHOPFLOORHEADER WHERE status = '0' AND workCenter = '$workCenter' ORDER BY docEntry DESC" );
 		 // return $this->db->get('IPP_MOBILE_SHOPFLOORHEADER')->result_array();
 		return $query->result_array();
 }

@@ -137,6 +137,7 @@ i.U_Standard,
 i.U_CriteriaName, 
 i.U_ValueType, 
 i.U_Standard
+
 from 
 [@ST_ROUTEPDH] a
 left join [@ST_ROUTEPDD] b on b.DocEntry = a.DocEntry
@@ -147,6 +148,7 @@ left join [@ST_UDRTH] F ON F.Code = b.U_Reference
 left join [@STEM_PRODCARDH] g on g.U_PD_Entry = c.DocEntry
 left join [@STEM_PRODCARDD] h on h.DocEntry = g.DocEntry and h.U_Sequence=a.U_Sequence
 LEFT JOIN [@ASTEM_STDSPEC] i on i.U_ItemCode = c.ItemCode and i.U_WCCode = b.U_WCCode
+
 
 where
 C.Status = 'R' 
