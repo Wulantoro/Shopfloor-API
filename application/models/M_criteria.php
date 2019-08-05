@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit ('No direct script access allowed');
 
 class M_criteria extends CI_Model{
 
-	function read($wccode = null, $docNum = null, $U_Sequence = null ) {
+	function read($wccode = null, $docNum = null, $seq = null ) {
   // function read($wccode = null, $docNum = null) {
     // function read($wccode = null) {
   // function read($docNum = null) {
@@ -117,7 +117,7 @@ b.U_WCCode='$wccode'
 
 
 $query = $this->db->query("SELECT distinct 
-a.U_Sequence, 
+a.U_Sequence AS 'seq', 
 h.U_Quantity, 
 C.itemCode, 
 C.docNum, 
@@ -136,7 +136,9 @@ i.U_Criteria,
 i.U_Standard, 
 i.U_CriteriaName, 
 i.U_ValueType, 
-i.U_Standard
+i.U_Standard, 
+j.actualResult,
+j.lineNumber
 
 from 
 [@ST_ROUTEPDH] a
@@ -148,6 +150,7 @@ left join [@ST_UDRTH] F ON F.Code = b.U_Reference
 left join [@STEM_PRODCARDH] g on g.U_PD_Entry = c.DocEntry
 left join [@STEM_PRODCARDD] h on h.DocEntry = g.DocEntry and h.U_Sequence=a.U_Sequence
 LEFT JOIN [@ASTEM_STDSPEC] i on i.U_ItemCode = c.ItemCode and i.U_WCCode = b.U_WCCode
+LEFT JOIN IPP_MOBILE_SHOPFLOORDETAIL1 j on j.DocEntry = a.DocEntry
 
 
 where
@@ -155,7 +158,7 @@ C.Status = 'R'
 AND E.U_IsActive='1' 
 AND b.U_WCCode='$wccode'
 AND c.docNum='$docNum'
-and a.U_Sequence ='1'
+and a.U_Sequence ='$seq'
 ");
 
 /***************************************************************************************************************************************/

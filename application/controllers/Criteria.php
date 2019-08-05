@@ -11,20 +11,14 @@ class Criteria extends REST_Controller{
 		$this->load->model('M_criteria');
 	}
 
-	public function index_get($wccode = 'wccode', $docNum = 'docNum', $U_Sequence = 'U_Sequence') {
-	// public function index_get($wccode = 'wccode', $docNum = 'docNum') {
-		// public function index_get($wccode = 'wccode') {
-	// public function index_get($docNum = 'docNum') {
-	// public function index_get($docNum = 'docNum', $wccode = 'wccode') {
+	public function index_get($wccode = 'wccode', $docNum = 'docNum', $seq = 'seq') {
+	
 		$wccode = $this->get('wccode');
 		$docNum = $this->get('docNum');
-		$U_Sequence = $this->get('U_Sequence');
-		// $wccode = $this->get('wccode');
-		$data = $this->M_criteria->read($wccode, $docNum, $U_Sequence);
-		// $data = $this->M_criteria->read($wccode, $docNum);
-		// $data = $this->M_criteria->read($wccode);
-		// $data = $this->M_criteria->read($docNum);
-
+		$seq = $this->get('seq');
+	
+		$data = $this->M_criteria->read($wccode, $docNum, $seq);
+		
 		if ($data) {
 			
 			$this->response([
