@@ -54,22 +54,74 @@ class InputReject extends REST_Controller {
 		}
 	}
 
-	public function index_delete($docEntry = 'docEntry') {
-		$docEntry = $this->delete('docEntry');
-		$cek = $this->M_inputreject->deleteReject($docEntry);
+	public function index_put() {
+
+		$data = [
+			'docEntry' =>$this->put('docEntry'),
+			 'lineNumber' => $this->put('lineNumber'),
+			'rejectCode' => $this->put('rejectCode'),
+			'rejectName' => $this->put('rejectName'),
+			'rejectQty' => $this->put('rejectQty')
+		];
+		$id = $this->put('id');
+		
+		$cek = $this->M_inputreject->putReject($data, $id);
+
 		if ($cek > 0) {
-			# code...
 			$this->response([
 				'status' => TRUE,
-				'message' => 'Data success for delete',
-			], REST_Controller::HTTP_OK);
-		} else {
+				'message' => 'Reject berhasil diedit',
+				'data' => $data
+			], Rest_Controller::HTTP_OK);
+		}else {
 			$this->response([
 				'status' => FALSE,
-				'message' => 'Data failed to delete',
-			], Rest_Controller::HTTP_NOT_FOUND);
+				'message' => 'Data gagal diedit',
+			], REST_Controller::HTTP_NOT_FOUND);
 		}
+
+	}
+
+	/*public function index_delete() {
+		$id = $this->delete('id');
+		$cek = $this->M_inputreject->deleteReject($id);
+
+		if ($cek > 0) {
+			$this->response([
+				'status' => True,
+				'message' => 'Reject berhasil dihapus',
+			], REST_Controller::HTTP_OK);
+		}else {
+			$this->response([
+				'status' => false,
+				'message' => 'Reject gagal dihapus'
+			], REST_Controller::HTTP_NOT_FOUND);
+		}
+	}*/
+
+	public function index_delete()
+	{
+	$id=$this->input->get('id');
+	$cek = $this->M_inputreject->deleterecords($id);
+
+	if ($cek > 0) {
+		$this->response([
+				'status' => false,
+				'message' => 'Reject gagal dihapus'
+			], REST_Controller::HTTP_NOT_FOUND);
+			
+		}else {
+			
+			$this->response([
+				'status' => True,
+				'message' => 'Reject berhasil dihapus',
+			], REST_Controller::HTTP_OK);
+		}
+
 	}
 }
+
+
+
 
 

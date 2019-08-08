@@ -27,4 +27,29 @@ class CompleteHeader extends Rest_Controller {
 				'message' => 'Data not found']);
 		}
 	}
-}
+
+	/*public function index_delete($docEntry = 'docEntry') {
+		$docEntry = $this->delete('docEntry');
+
+		$cek = $this->M_completeheader->deleteReject($docEntry);
+
+		if ($cek) {
+			# code...
+			$this->response([
+				'status' => TRUE,
+				'message' => 'Data success for delete',
+			], REST_Controller::HTTP_OK);
+		} else {
+			$this->response([
+				'status' => FALSE,
+				'message' => 'Data failed to delete',
+			], Rest_Controller::HTTP_NOT_FOUND);
+		
+		}*/
+
+		public function index_delete($docEntry = 'docEntry') {
+			$r = $this->M_completeheader->delete($docEntry);
+			$this->response($r);
+		}
+
+	}

@@ -22,12 +22,22 @@ class M_inputreject extends CI_Model{
 		// return $query->affected_rows();
 	}
 
-	function deleteReject($docEntry) {
-		$this->db->delete('IPP_MOBILE_SHOPFLOORDETAIL2', ['docEntry' => $docEntry]);
+	function putReject($data, $id) {
+		$this->db->update('IPP_MOBILE_SHOPFLOORDETAIL2', $data, ['id' => $id]);
+
 		return $this->db->affected_rows();
-
-		// $delete = $this->db->delete("DELETE FROM IPP_MOBILE_SHOPFLOORDETAIL2 where docEntry = '$docEntry'");
-		// return $delete->affected_rows();
-
 	}
+
+	/*function deleteReject($id) {
+		$this->db->delete('IPP_MOBILE_SHOPFLOORDETAIL2', ['id' => $id]);
+		return $this->db->affected_rows();
+	}*/
+
+	function deleterecords($id)
+	{
+	$this->db->query("delete  from IPP_MOBILE_SHOPFLOORDETAIL2 where id='".$id."'");
+	}
+
+	
+
 }
