@@ -13,10 +13,6 @@ class M_sincheader extends CI_Model {
 		$this->db->limit(1);
 
 		return $this->db->get('@STEM_PRDSPECH')->result_array();
-
-
-
-
 }
 
 function addSincHeader($data) {
