@@ -34,7 +34,8 @@ class SimpanHeader extends Rest_Controller {
 		public function index_post() {
 			$data = [
 				  // 'docEntry' => $this->post('docEntry'),
-				
+				    'id' => $this->post('id'),
+            'mobileId' => $this->post('mobileId'),
            'docNum' => $this->post('docNum'),
            'docDate' => $this->post('docDate'),
            'prodNo' => $this->post('prodNo'),
@@ -56,7 +57,7 @@ class SimpanHeader extends Rest_Controller {
            'outQty' => $this->post('outQty'),
            'remarks' => $this->post('remarks'),
            'userId'  => $this->post('userId'),
-           'QcName'  => $this->post('QcName'),
+           // 'QcName'  => $this->post('QcName'),
            'posted'  => $this->post('posted'),
            'TargetEntry'  => $this->post('TargetEntry'),
            'UploadTime'  => $this->post('UploadTime'),
@@ -80,7 +81,9 @@ class SimpanHeader extends Rest_Controller {
 
     public function index_put() {
       $data = [
-        
+          
+          'id' => $this->put('id'),
+            // 'mobileId' => $this->put('mobileId'),
            'docNum' => $this->put('docNum'),
            'docDate' => $this->put('docDate'),
            'prodNo' => $this->put('prodNo'),
@@ -102,7 +105,7 @@ class SimpanHeader extends Rest_Controller {
            'outQty' => $this->put('outQty'),
            'remarks' => $this->put('remarks'),
            'userId'  => $this->put('userId'),
-           'QcName'  => $this->put('QcName'),
+           // 'QcName'  => $this->put('QcName'),
            'posted'  => $this->put('posted'),
            'TargetEntry'  => $this->put('TargetEntry'),
            'UploadTime'  => $this->put('UploadTime'),

@@ -3,11 +3,12 @@ defined('BASEPATH') OR exit ('No direct script access allowed');
 
 class M_inputreject extends CI_Model{
 
-	function read($docentry) {
+	function read($hostHeadEntry = null) {
 		// $query = $this->db->query("SELECT * from STEM_MOBILE_SHOPFLOORLINESREJECT where docentry = '$docentry'");
 
 		// $query = $this->db->query("SELECT * FROM IPP_MOBILE_SHOPFLOORDETAIL2 where docentry = '$docentry'");
-		 $query = $this->db->query("SELECT * FROM IPP_MOBILE_SHOPFLOORDETAIL2 where docentry = '$docentry'");
+		 // $query = $this->db->query("SELECT * FROM IPP_MOBILE_SHOPFLOORDETAIL2 where docentry = '$docentry'");
+		$query = $this->db->query("SELECT * FROM STEM_MOBILE_SHOPFLOORLINESREJECT where hostHeadEntry = '$hostHeadEntry'");
 
 		return $query->result_array();
 	}
@@ -15,7 +16,8 @@ class M_inputreject extends CI_Model{
 	function addReject($data) {
 		// $query = $this->db->insert("INSERT INTO IPP_MOBILE_SHOPFLOORDETAIL2  ")
 
-		$this->db->insert('IPP_MOBILE_SHOPFLOORDETAIL2', $data);
+		// $this->db->insert('IPP_MOBILE_SHOPFLOORDETAIL2', $data);
+		$this->db->insert('STEM_MOBILE_SHOPFLOORLINESREJECT', $data);
 		$this->db->set('lineNumber', '1');
 
 		return $this->db->affected_rows();

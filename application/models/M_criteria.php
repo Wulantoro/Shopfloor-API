@@ -138,7 +138,9 @@ i.U_CriteriaName,
 i.U_ValueType, 
 i.U_Standard, 
 j.actualResult,
-j.lineNumber
+j.lineNumber,
+j.hostHeadEntry,
+j.id
 
 from 
 [@ST_ROUTEPDH] a
@@ -150,7 +152,8 @@ left join [@ST_UDRTH] F ON F.Code = b.U_Reference
 left join [@STEM_PRODCARDH] g on g.U_PD_Entry = c.DocEntry
 left join [@STEM_PRODCARDD] h on h.DocEntry = g.DocEntry and h.U_Sequence=a.U_Sequence
 LEFT JOIN [@ASTEM_STDSPEC] i on i.U_ItemCode = c.ItemCode and i.U_WCCode = b.U_WCCode
-LEFT JOIN IPP_MOBILE_SHOPFLOORDETAIL1 j on j.DocEntry = a.DocEntry
+-- LEFT JOIN IPP_MOBILE_SHOPFLOORDETAIL1 j on j.DocEntry = a.DocEntry
+LEFT JOIN STEM_MOBILE_SHOPFLOORLINESCRITERIA j on j.DocEntry = a.DocEntry
 
 
 where
@@ -167,7 +170,8 @@ and a.U_Sequence ='$seq'
 
 
   function addCriteria($data) {
-    $this->db->insert('IPP_MOBILE_SHOPFLOORDETAIL1', $data);
+    // $this->db->insert('IPP_MOBILE_SHOPFLOORDETAIL1', $data);
+    $this->db->insert('STEM_MOBILE_SHOPFLOORLINESCRITERIA', $data);
     return $this->db->affected_rows();
   }
 }

@@ -12,9 +12,9 @@ class InputReject extends REST_Controller {
 		$this->load->model('M_inputreject');
 	}
 
-	public function index_get() {
-		$docEntry = $this->get('docEntry');
-		$data = $this->M_inputreject->read($docEntry);
+	public function index_get($hostHeadEntry = 'hostHeadEntry') {
+		$hostHeadEntry = $this->get('hostHeadEntry');
+		$data = $this->M_inputreject->read($hostHeadEntry);
 		if ($data) {
 			# code...
 			$this->response([
@@ -32,8 +32,10 @@ class InputReject extends REST_Controller {
 
 	public function index_post() {
 		$data = [
-			'docEntry' =>$this->post('docEntry'),
-			 'lineNumber' => $this->post('lineNumber'),
+			
+			'hostHeadEntry' =>$this->post('hostHeadEntry'),
+			'id' => $this->post('id'),
+			'lineNumber' => $this->post('lineNumber'),
 			'rejectCode' => $this->post('rejectCode'),
 			'rejectName' => $this->post('rejectName'),
 			'rejectQty' => $this->post('rejectQty')

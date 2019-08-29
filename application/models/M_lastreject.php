@@ -3,7 +3,8 @@ defined('BASEPATH') OR exit ('No direct script access allowed');
 
 class M_lastreject extends CI_Model{
 
-	function read($docEntry = null) {
+	// function read($docEntry = null) {
+	function read($hostHeadEntry = null) {
 		/*$query = $this->db->query("SELECT lineNumber
            FROM  IPP_MOBILE_SHOPFLOORDETAIL2 order by lineNumber DESC LIMIT 1 WHERE docEntry = 'docEntry'");*/
 
@@ -11,11 +12,13 @@ class M_lastreject extends CI_Model{
 		// $this->db->select('lineNumber');
 		// $this->db->select('rejectName');
 		// $this->db->limit('1');
-		$this->db->where('docEntry',$docEntry);
+		// $this->db->where('docEntry',$docEntry);
+           $this->db->where('hostHeadEntry',$hostHeadEntry);
 		$this->db->order_by('lineNumber', 'desc');
 		$this->db->limit(1);
 
-		return $this->db->get('IPP_MOBILE_SHOPFLOORDETAIL2')->result_array();
+		// return $this->db->get('IPP_MOBILE_SHOPFLOORDETAIL2')->result_array();
+		return $this->db->get('STEM_MOBILE_SHOPFLOORLINESREJECT')->result_array();
 		// return $this->db->array();
            
 	}
