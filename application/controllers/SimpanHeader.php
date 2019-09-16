@@ -83,7 +83,7 @@ class SimpanHeader extends Rest_Controller {
       $data = [
           
           'id' => $this->put('id'),
-            // 'mobileId' => $this->put('mobileId'),
+            'mobileId' => $this->put('mobileId'),
            'docNum' => $this->put('docNum'),
            'docDate' => $this->put('docDate'),
            'prodNo' => $this->put('prodNo'),

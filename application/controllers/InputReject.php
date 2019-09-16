@@ -59,15 +59,16 @@ class InputReject extends REST_Controller {
 	public function index_put() {
 
 		$data = [
-			'docEntry' =>$this->put('docEntry'),
+			'id' =>$this->put('id'),
+			'hostHeadEntry' => $this->put('hostHeadEntry'),
 			 'lineNumber' => $this->put('lineNumber'),
 			'rejectCode' => $this->put('rejectCode'),
 			'rejectName' => $this->put('rejectName'),
 			'rejectQty' => $this->put('rejectQty')
 		];
-		$id = $this->put('id');
+		$docEntry = $this->put('docEntry');
 		
-		$cek = $this->M_inputreject->putReject($data, $id);
+		$cek = $this->M_inputreject->putReject($data, $docEntry);
 
 		if ($cek > 0) {
 			$this->response([
@@ -103,8 +104,8 @@ class InputReject extends REST_Controller {
 
 	public function index_delete()
 	{
-	$id=$this->input->get('id');
-	$cek = $this->M_inputreject->deleterecords($id);
+	$docEntry=$this->input->get('docEntry');
+	$cek = $this->M_inputreject->deleterecords($docEntry);
 
 	if ($cek > 0) {
 		$this->response([

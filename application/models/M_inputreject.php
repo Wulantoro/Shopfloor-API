@@ -24,8 +24,9 @@ class M_inputreject extends CI_Model{
 		// return $query->affected_rows();
 	}
 
-	function putReject($data, $id) {
-		$this->db->update('IPP_MOBILE_SHOPFLOORDETAIL2', $data, ['id' => $id]);
+	function putReject($data, $docEntry) {
+		// $this->db->update('IPP_MOBILE_SHOPFLOORDETAIL2', $data, ['id' => $id]);
+		$this->db->update('STEM_MOBILE_SHOPFLOORLINESREJECT', $data, ['docEntry' => $docEntry]);
 
 		return $this->db->affected_rows();
 	}
@@ -35,9 +36,10 @@ class M_inputreject extends CI_Model{
 		return $this->db->affected_rows();
 	}*/
 
-	function deleterecords($id)
+	function deleterecords($docEntry)
 	{
-	$this->db->query("delete  from IPP_MOBILE_SHOPFLOORDETAIL2 where id='".$id."'");
+	// $this->db->query("delete  from IPP_MOBILE_SHOPFLOORDETAIL2 where id='".$id."'");
+		$this->db->query("delete  from STEM_MOBILE_SHOPFLOORLINESREJECT where docEntry = '".$docEntry."'");
 	}
 
 	

@@ -11,10 +11,10 @@ class Upcriteria extends REST_Controller {
 		$this->load->model('M_upcriteria');
 	}
 
-	public function index_get($docEntry = 'docEntry') {
-		$docEntry = $this->get('docEntry');
+	public function index_get($hostHeadEntry = 'hostHeadEntry') {
+		$hostHeadEntry = $this->get('hostHeadEntry');
 
-		$data = $this->M_upcriteria->read($docEntry);
+		$data = $this->M_upcriteria->read($hostHeadEntry);
 
 		if ($data) {
 			
