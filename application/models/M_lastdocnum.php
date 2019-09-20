@@ -10,8 +10,9 @@ class M_lastdocnum extends CI_Model {
 		$this->db->order_by('docEntry', 'desc');
 		$this->db->limit(1);
 
-		// return $this->db->get('IPP_MOBILE_SHOPFLOORHEADER')->result_array();
-		return $this->db->get('STEM_MOBILE_SHOPFLOORHEADER')->result_array();
+/********************************************************/
+		return $this->db->get('IPP_MOBILE_SHOPFLOORHEADER')->result_array();
+		// return $this->db->get('STEM_MOBILE_SHOPFLOORHEADER')->result_array();
 		/****************************************************************/
 
 

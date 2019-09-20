@@ -7,8 +7,10 @@ class M_inputreject extends CI_Model{
 		// $query = $this->db->query("SELECT * from STEM_MOBILE_SHOPFLOORLINESREJECT where docentry = '$docentry'");
 
 		// $query = $this->db->query("SELECT * FROM IPP_MOBILE_SHOPFLOORDETAIL2 where docentry = '$docentry'");
-		 // $query = $this->db->query("SELECT * FROM IPP_MOBILE_SHOPFLOORDETAIL2 where docentry = '$docentry'");
-		$query = $this->db->query("SELECT * FROM STEM_MOBILE_SHOPFLOORLINESREJECT where hostHeadEntry = '$hostHeadEntry'");
+		 $query = $this->db->query("SELECT * FROM IPP_MOBILE_SHOPFLOORLINESREJECT where hostHeadEntry = '$hostHeadEntry'");
+		// $query = $this->db->query("SELECT * FROM STEM_MOBILE_SHOPFLOORLINESREJECT where hostHeadEntry = '$hostHeadEntry' ");
+
+		// $query = $this->db->query("SELECT SUM(rejectQty) AS total, rejectName, rejectCode, rejectQty FROM STEM_MOBILE_SHOPFLOORLINESREJECT WHERE hostHeadEntry = 'hostHeadEntry' GROUP BY rejectName, rejectCode, rejectQty ");
 
 		return $query->result_array();
 	}
@@ -16,8 +18,8 @@ class M_inputreject extends CI_Model{
 	function addReject($data) {
 		// $query = $this->db->insert("INSERT INTO IPP_MOBILE_SHOPFLOORDETAIL2  ")
 
-		// $this->db->insert('IPP_MOBILE_SHOPFLOORDETAIL2', $data);
-		$this->db->insert('STEM_MOBILE_SHOPFLOORLINESREJECT', $data);
+		$this->db->insert('IPP_MOBILE_SHOPFLOORLINESREJECT', $data);
+		// $this->db->insert('STEM_MOBILE_SHOPFLOORLINESREJECT', $data);
 		$this->db->set('lineNumber', '1');
 
 		return $this->db->affected_rows();
@@ -25,8 +27,8 @@ class M_inputreject extends CI_Model{
 	}
 
 	function putReject($data, $docEntry) {
-		// $this->db->update('IPP_MOBILE_SHOPFLOORDETAIL2', $data, ['id' => $id]);
-		$this->db->update('STEM_MOBILE_SHOPFLOORLINESREJECT', $data, ['docEntry' => $docEntry]);
+		$this->db->update('IPP_MOBILE_SHOPFLOORLINESREJECT', $data, ['docEntry' => $docEntry]);
+		// $this->db->update('STEM_MOBILE_SHOPFLOORLINESREJECT', $data, ['docEntry' => $docEntry]);
 
 		return $this->db->affected_rows();
 	}
@@ -38,8 +40,8 @@ class M_inputreject extends CI_Model{
 
 	function deleterecords($docEntry)
 	{
-	// $this->db->query("delete  from IPP_MOBILE_SHOPFLOORDETAIL2 where id='".$id."'");
-		$this->db->query("delete  from STEM_MOBILE_SHOPFLOORLINESREJECT where docEntry = '".$docEntry."'");
+	$this->db->query("delete  from IPP_MOBILE_SHOPFLOORLINESREJECT where docEntry='".$docEntry."'");
+		// $this->db->query("delete  from STEM_MOBILE_SHOPFLOORLINESREJECT where docEntry = '".$docEntry."'");
 	}
 
 	

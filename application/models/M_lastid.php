@@ -12,7 +12,8 @@ class M_lastid extends CI_Model {
 
 		// $query = $this->db->query("SELECT TOP 1 * from STEM_MOBILE_SHOPFLOORHEADER WHERE mobileId = '$mobileId' ORDER BY docEntry DESC");
 
-		$query = $this->db->query("SELECT id from STEM_MOBILE_SHOPFLOORHEADER WHERE docEntry = '$docEntry'");
+		// $query = $this->db->query("SELECT id from STEM_MOBILE_SHOPFLOORHEADER WHERE docEntry = '$docEntry'");
+		$query = $this->db->query("SELECT id from IPP_MOBILE_SHOPFLOORHEADER WHERE docEntry = '$docEntry'");
 		return $query->result_array();
 	}
 }

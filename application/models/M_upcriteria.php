@@ -44,7 +44,8 @@ class M_upcriteria extends CI_Model {
 
 	public function save_batch($data) {
 
-		return $this->db->insert_batch('STEM_MOBILE_SHOPFLOORLINESCRITERIA', $data);
+		// return $this->db->insert_batch('STEM_MOBILE_SHOPFLOORLINESCRITERIA', $data);
+		return $this->db->insert_batch('IPP_MOBILE_SHOPFLOORLINESCRITERIA', $data);
 	}
 
 

@@ -17,8 +17,8 @@ class M_lastreject extends CI_Model{
 		$this->db->order_by('lineNumber', 'desc');
 		$this->db->limit(1);
 
-		// return $this->db->get('IPP_MOBILE_SHOPFLOORDETAIL2')->result_array();
-		return $this->db->get('STEM_MOBILE_SHOPFLOORLINESREJECT')->result_array();
+		return $this->db->get('IPP_MOBILE_SHOPFLOORLINESREJECT')->result_array();
+		// return $this->db->get('STEM_MOBILE_SHOPFLOORLINESREJECT')->result_array();
 		// return $this->db->array();
            
 	}
