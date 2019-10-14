@@ -18,6 +18,7 @@ function read($workCenter) {
 	function addHeader($data) {
 		$this->db->insert('IPP_MOBILE_SHOPFLOORHEADER', $data);
 		// $this->db->insert('STEM_MOBILE_SHOPFLOORHEADER', $data);
+		
 		return $this->db->affected_rows();
 	}
 

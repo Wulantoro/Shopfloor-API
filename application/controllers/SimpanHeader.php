@@ -110,7 +110,7 @@ class SimpanHeader extends Rest_Controller {
            'TargetEntry'  => $this->put('TargetEntry'),
            'UploadTime'  => $this->put('UploadTime'),
            'workCenter'  => $this->put('workCenter'),
-           'status'  => $this->put('status')
+           // 'status'  => $this->put('status')
        ];
          $docEntry = $this->put('docEntry');
        $cek = $this->M_simpanheader->putHeader($data, $docEntry);
