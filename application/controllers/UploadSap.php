@@ -184,15 +184,142 @@ class UploadSap extends Rest_Controller {
 
 
 /******************NYOBA lagi dan lagi INSERT 3 TABEL SEKALIGUS*********************************/
+/******************udah mau bener kurang insert array*************************************/
+// public function index_post() {
+//   $this->load->model('M_uploadsap');
+
+//   // get form variable
+//    // $id = $this->input->post('id');
+//    //  $docNum = $this->input->post('docNum');      
+//    //  $prodNo = $this->input->post('prodNo');
+
+//             $id = $this->input->post('id');
+//             $mobileId = $this->input->post('mobileId');
+//            $docNum = $this->input->post('docNum');
+//            $docDate = $this->input->post('docDate');
+//            $prodNo = $this->input->post('prodNo');
+//            $prodCode = $this->input->post('prodCode');
+//            $prodName = $this->input->post('prodName');
+//            $prodPlanQty = $this->input->post('prodPlanQty');
+//            $prodStatus = $this->input->post('prodStatus');
+//            $routeCode = $this->input->post('routeCode');
+//            $routeName = $this->input->post('routeName');
+//            $sequence = $this->input->post('sequence');
+//            $sequenceQty = $this->input->post('sequenceQty');
+//            $shift = $this->input->post('shift');
+//            $shiftName = $this->input->post('shiftName');
+//            $tanggalMulai = $this->input->post('tanggalMulai');
+//            $tanggalSelesai = $this->input->post('tanggalSelesai');
+//            $jamMulai = $this->input->post('jamMulai');
+//            $jamSelesai = $this->input->post('jamSelesai');
+//            $inQty = $this->input->post('inQty');
+//            $outQty = $this->input->post('outQty');
+//            $remarks = $this->input->post('remarks');
+//            $userId  = $this->input->post('userId');
+//            $posted  = $this->input->post('posted');
+//            $TargetEntry  = $this->input->post('TargetEntry');
+//            $UploadTime  = $this->input->post('UploadTime');
+//            $workCenter  = $this->input->post('workCenter');
+//            $status  = $this->input->post('status');
+  
+
+//     // $data1 = [
+//     //     'id' => $this->input->post('id'),
+//     //         'mobileId' => $this->input->post('mobileId'),
+//     //        'docNum' => $this->input->post('docNum'),
+//     //        'docDate' => $this->input->post('docDate'),
+//     //        'prodNo' => $this->input->post('prodNo'),
+//     //        'prodCode' => $this->input->post('prodCode'),
+//     //        'prodName' => $this->input->post('prodName'),
+//     //        'prodPlanQty' => $this->input->post('prodPlanQty'),
+//     //        'prodStatus' => $this->input->post('prodStatus'),
+//     //        'routeCode' => $this->input->post('routeCode'),
+//     //        'routeName' => $this->input->post('routeName'),
+//     //        'sequence' => $this->input->post('sequence'),
+//     //        'sequenceQty' => $this->input->post('sequenceQty'),
+//     //        'shift' => $this->input->post('shift'),
+//     //        'shiftName' => $this->input->post('shiftName'),
+//     //        'tanggalMulai' => $this->input->post('tanggalMulai'),
+//     //        'tanggalSelesai' => $this->input->post('tanggalSelesai'),
+//     //        'jamMulai' => $this->input->post('jamMulai'),
+//     //        'jamSelesai' => $this->input->post('jamSelesai'),
+//     //        'inQty' => $this->input->post('inQty'),
+//     //        'outQty' =>$this->input->post('outQty'),
+//     //        'remarks' => $this->input->post('remarks'),
+//     //        'userId'  => $this->input->post('userId'),
+//     //        'posted'  => $this->input->post('posted'),
+//     //        'TargetEntry'  => $this->input->post('TargetEntry'),
+//     //        'UploadTime'  => $this->input->post('UploadTime'),
+//     //        'workCenter'  => $this->input->post('workCenter'),
+//     //        'status'  => $this->input->post('status'),
+//     //      ];
+
+
+// /*****************************field reject*********************************************/
+// /********************kalo pake yang bawah 9ini ga dipake*********************/
+// // $data2 = array(
+// //     // 'lineNumber' => $this->input->post('lineNumber'),
+// //     // 'rejectCode' => $this->input->post('rejectCode'),
+// //     // 'id' => $this->input->post('id'),
+// //     //  'hostHeadEntry' => $this->input->post('hostHeadEntry'),
+// //     //   'rejectName' => $this->input->post('rejectName'),
+// //     //   'rejectQty' => $this->input->post('rejectQty')
+// //     );
+
+//       $lineNumber = $this->input->post('lineNumber');
+//      $rejectCode = $this->input->post('rejectCode');
+//     $id = $this->input->post('id');
+//      $hostHeadEntry = $this->input->post('hostHeadEntry');
+//       $rejectName = $this->input->post('rejectName');
+//       $rejectQty = $this->input->post('rejectQty');
+
+
+//       /*************field criteria*************************************************************/
+//       // $id = $this->input->post('id');
+//       // $hostHeadEntry = $this->input->post('hostHeadEntry');
+//       // $lineNumber = $this->post('lineNumber');
+//       // $criteria = $this->post('criteria');
+//       // $criteriaDesc= $this->post('criteriaDesc');
+//       // $valueType = $this->post('valueType');
+//       // $standard = $this->post('standard');
+//       // $actualResult= $this->post('actualResult');
+//       // $actualRemarks= $this->post('actualRemarks');
+
+
+//       $data1 = array($id, $docNum, $prodNo, $mobileId, $docDate, $prodCode, $prodName, $prodPlanQty, $prodStatus, $routeCode, $routeName, $sequence, $sequenceQty, $shift, $shiftName, $tanggalMulai, $tanggalSelesai, $jamMulai, $jamSelesai, $inQty, $outQty, $remarks, $userId, $posted, $TargetEntry, $UploadTime, $workCenter, $status);
+   
+
+//       $data2 = array($lineNumber, $rejectCode, $id, $rejectName, $rejectQty );
+    
+
+//       // $data3 = array($id, $lineNumber, $criteria, $criteriaDesc, $standard, $actualResult, $actualRemarks);
+
+//       $Alldata = array($data1, $data2);
+    
+
+//     $cek = $this->M_uploadsap->addHeader($data1, $data2);
+//       // $cek = $this->M_uploadsap->addHeader($data1);
+
+//      if ($cek) {
+//          $this->response([
+//            'status' => TRUE,
+//            'message' => 'Data berhasil disimpan',
+//            'data' => $Alldata
+//          ], REST_Controller::HTTP_OK);
+//        } else{
+//          $this->response([
+//            'status' => FALSE,
+//            'message' => 'Data failed to add',
+//          ], REST_Controller::HTTP_NOT_FOUND);
+//        }
+// }
+/****************************************************************************************************************************/
+
+/********************************coba input array*******************************************************/
 public function index_post() {
   $this->load->model('M_uploadsap');
 
-  // get form variable
-   // $id = $this->input->post('id');
-   //  $docNum = $this->input->post('docNum');      
-   //  $prodNo = $this->input->post('prodNo');
-
-        $id = $this->input->post('id');
+ $id = $this->input->post('id');
             $mobileId = $this->input->post('mobileId');
            $docNum = $this->input->post('docNum');
            $docDate = $this->input->post('docDate');
@@ -215,28 +342,35 @@ public function index_post() {
            $outQty = $this->input->post('outQty');
            $remarks = $this->input->post('remarks');
            $userId  = $this->input->post('userId');
-           // 'QcName'  => $this->post('QcName'),
            $posted  = $this->input->post('posted');
            $TargetEntry  = $this->input->post('TargetEntry');
            $UploadTime  = $this->input->post('UploadTime');
            $workCenter  = $this->input->post('workCenter');
            $status  = $this->input->post('status');
 
+           $data1 = array($id, $docNum, $prodNo, $mobileId, $docDate, $prodCode, $prodName, $prodPlanQty, $prodStatus, $routeCode, $routeName, $sequence, $sequenceQty, $shift, $shiftName, $tanggalMulai, $tanggalSelesai, $jamMulai, $jamSelesai, $inQty, $outQty, $remarks, $userId, $posted, $TargetEntry, $UploadTime, $workCenter, $status);
 
-/*****************************field reject*********************************************/
-    $lineNumber = $this->input->post('lineNumber');
-    $rejectCode = $this->input->post('rejectCode');
-    $id = $this->input->post('id');
+           $data2 = json_decode(file_get_contents('php://input'), TRUE);
 
-    $data1 = array($id, $mobileId, $docNum, $docDate, $prodNo, $prodCode, $prodName, $prodPlanQty, $prodStatus, $routeCode, $prodName, $prodPlanQty, $prodStatus, $routeCode, $routeName, $sequence, $sequenceQty, $shift, $shiftName, $tanggalMulai, $jamMulai, $jamSelesai, $inQty, $outQty, $remarks, $userId, $posted, $TargetEntry, $UploadTime, $workCenter, $status);
-   
+    
 
-    $data2 = array($lineNumber, $rejectCode, $id);
+      
+      $cek = $this->M_uploadsap->addHeader($data1, $data2);
 
-    $this->M_uploadsap->addHeader($data1, $data2);
-
-
-}
+      if ($cek ) {
+      # code...
+      $this->response([
+        'status' => TRUE,
+        'message' => 'Criteria berhasil di tambah',
+        'data' => $newArr
+      ], REST_Controller::HTTP_OK);
+    }else {
+      $this->response([
+        'status' => FALSE,
+        'message' => 'Criteria failed to add',
+      ], REST_Controller::HTTP_NOT_FOUND);
+    }
+  }
 
     public function index_put() {
       $data = [
@@ -273,7 +407,7 @@ public function index_post() {
        ];
          $docEntry = $this->put('docEntry');
        $cek = $this->M_simpanheader->putHeader($data, $docEntry);
-       if ($cek>0) {
+       if ($cek > 0) {
         $this->response([
           'status' => TRUE,
           'message' => 'Data berhasil disimpan',

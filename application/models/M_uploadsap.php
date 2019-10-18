@@ -25,7 +25,7 @@ function read($workCenter) {
 	// }
 
 
-// /******************NYOBA INSERT 3 TABEL SEKALIGUS*********************************/
+// /******************NYOBA INSERT 3 TABEL SEKALIGUS*************salah********************/
 /*function addHeader($header, $criteria, $reject) {
 	$this->db->trans_start();
 
@@ -57,7 +57,7 @@ $this->db->trans_complete();
 
 }*/
 
-/*******************coba terus ninput 3 tabvle******************/
+/*******************coba terus ninput 3 tabvle****************** salah/
 // function create ($data1, $data2) {
 // 	$this->db->insert( $data1);
 // 	$id_table1 = $this->db->insert_id();
@@ -74,21 +74,55 @@ $this->db->trans_complete();
 
 
 
-/******************NYOBA lagi dan lagi INSERT 3 TABEL SEKALIGUS*********************************/
+/******************NYOBA lagi dan lagi INSERT 3 TABEL SEKALIGUS******************************BENER***/
+// function addHeader($data1, $data2) {
+// 	$this->db->trans_start();
+
+// 	$sql1 = "INSERT INTO STEM_MOBILE_SHOPFLOORHEADER (id, docNum, prodNo, mobileId, docDate, prodCode, prodName, prodPlanQty, prodStatus, routeCode, routeName, sequence, sequenceQty, shift, shiftName, tanggalMulai, tanggalSelesai, jamMulai, jamSelesai, inQty, outQty, remarks, userId, posted, TargetEntry, UploadTime, workCenter, status) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
+
+
+// 	$this->db->query($sql1, $data1);
+// 	$docEntry_header = $this->db->insert_id();
+
+
+// /****************bener*****************/
+// 	$sql2 = "INSERT INTO STEM_MOBILE_SHOPFLOORLINESREJECT (hostHeadEntry, lineNumber, rejectCode, id, rejectName, rejectQty) VALUES ($docEntry_header,?,?,?,?,?)";
+// 	$this->db->query($sql2, $data2);
+
+// 	// $sql3 = "INSERT INTO STEM_MOBILE_SHOPFLOORLINESCRITERIA (hostHeadEntry, id, lineNumber, criteria, criteriaDesc, standard, actualResult, actualRemarks) VALUES ($docEntry_header,?,?,?,?,?,?,?)";
+// 	// $this->db->query($sql3, $data3);
+
+// 	$this->db->trans_complete(); 
+
+//  return $this->db->insert_id();  
+
+// }
+/*****************************************************************/
+
+
+
+/*****************************input array*************************/
 function addHeader($data1, $data2) {
 	$this->db->trans_start();
 
-	$sql1 = "INSERT INTO STEM_MOBILE_SHOPFLOORHEADER (id, docNum, prodNo) VALUES(?,?,?)";
+	$sql1 = "INSERT INTO STEM_MOBILE_SHOPFLOORHEADER (id, docNum, prodNo, mobileId, docDate, prodCode, prodName, prodPlanQty, prodStatus, routeCode, routeName, sequence, sequenceQty, shift, shiftName, tanggalMulai, tanggalSelesai, jamMulai, jamSelesai, inQty, outQty, remarks, userId, posted, TargetEntry, UploadTime, workCenter, status) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+
 	$this->db->query($sql1, $data1);
 	$docEntry_header = $this->db->insert_id();
 
-	$sql2 = "INSERT INTO STEM_MOBILE_SHOPFLOORLINESREJECT (hostHeadEntry, lineNumber, rejectCode, id) VALUES ($docEntry_header, ?, ?, ?)";
-	$this->db->query($sql2, $data2);
-	 $this->db->trans_complete(); 
+	$sql2 = $this->db->insert_batch('STEM_MOBILE_SHOPFLOORLINESREJECT', $data2, ['hostHeadEntry' => $docEntry_header]); 
 
- return $this->db->insert_id();  
+	$this->db->trans_complete(); 
 
+ return $this->db->insert_id(); 
 }
+
+/********************************************************/
+
+
+
+	/****************************************************************/
 
 
 function putHeader($data, $docEntry) {
