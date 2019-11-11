@@ -402,6 +402,70 @@ class UploadSap extends Rest_Controller {
 
 /***********************************************************************/
 
+/***********SUDAH BENAR KURANG CRITERIA*************************/
+// public function index_post() {
+
+// // $this->load->model('M_uploadsap');
+
+// $data = json_decode(file_get_contents('php://input'), TRUE);
+// $data1 = [
+//     //      // 'docEntry' => $this->post('docEntry'),
+//            'id' => $data['id'],
+//             'mobileId' => $data['mobileId'],
+//            'docNum' => $data['docNum'],
+//            'docDate' => $data['docDate'],
+//            'prodNo' => $data['prodNo'],
+//            'prodCode' => $data['prodCode'],
+//            'prodName' => $data['prodName'],
+//            'prodPlanQty' => $data['prodPlanQty'],
+//            'prodStatus' => $data['prodStatus'],
+//            'routeCode' => $data['routeCode'],
+//            'routeName' => $data['routeName'],
+//            'sequence' => $data['sequence'],
+//            'sequenceQty' => $data['sequenceQty'],
+//            'shift' => $data['shift'],
+//            'shiftName' => $data['shiftName'],
+//            'tanggalMulai' => $data['tanggalMulai'],
+//            'tanggalSelesai' => $data['tanggalSelesai'],
+//            'jamMulai' => $data['jamMulai'],
+//            'jamSelesai' => $data['jamSelesai'],
+//            'inQty' => $data['inQty'],
+//            'outQty' => $data['outQty'],
+//            'remarks' => $data['remarks'],
+//            'userId'  => $data['userId'],
+//            // 'QcName'  => $this->post('QcName'),
+//            'posted'  => $data['posted'],
+//            'TargetEntry'  => $data['TargetEntry'],
+//            'UploadTime'  => $data['UploadTime'],
+//            'workCenter'  => $data['workCenter'],
+//            'status'  => $data['status']
+//        ];
+       
+
+//        $data2 = array();
+//        $data2 = $data['detail'];
+
+       
+//        $dataArr = array($data1, $data2);
+
+//        $cek = $this->M_uploadsap->addHeader($data1, $data2);
+//        if ($cek) {
+//          $this->response([
+//            'status' => TRUE,
+//            'message' => 'Data berhasil disimpan',
+//            'data' => $cek
+//          ], REST_Controller::HTTP_OK);
+//        } else{
+//          $this->response([
+//            'status' => FALSE,
+//            'message' => 'Data failed to add',
+//          ], REST_Controller::HTTP_NOT_FOUND);
+//        }
+
+// }
+/*****************************************************/
+
+
 public function index_post() {
 
 // $this->load->model('M_uploadsap');
@@ -443,10 +507,13 @@ $data1 = [
 
        $data2 = array();
        $data2 = $data['detail'];
-   
-       $dataArr = array($data1, $data2);
 
-       $cek = $this->M_uploadsap->addHeader($data1, $data2);
+       $data3 = array();
+       $data3 = $data['detail1'];
+   
+       $dataArr = array($data1, $data2, $data3);
+
+       $cek = $this->M_uploadsap->addHeader($data1, $data2, $data3);
        if ($cek) {
          $this->response([
            'status' => TRUE,
@@ -511,3 +578,76 @@ $data1 = [
        }
     }
 	}
+
+
+// json format
+   // {
+   //          "id": "3",
+   //          "mobileId": "40a25415b59ff096",
+   //          "docNum": "S20191019999",
+   //          "docDate": "2019-10-04 00:00:00.000",
+   //          "prodNo": "10000000",
+   //          "prodCode": "7-01-0032",
+   //          "prodName": "TARIKAN LACI TOSO 300 A",
+   //          "prodPlanQty": "12000.000000",
+   //          "prodStatus": "R",
+   //          "routeCode": "R035",
+   //          "routeName": "INJ160/VAC-ANTIK/ASS",
+   //          "sequence": "1",
+   //          "sequenceQty": "6000.000000",
+   //          "shift": "JmS1",
+   //          "shiftName": "Jumat - Shift 1",
+   //          "tanggalMulai": "2019-10-04 00:00:00.000",
+   //          "tanggalSelesai": "2019-10-04 00:00:00.000",
+   //          "jamMulai": "10:41:46",
+   //          "jamSelesai": "10:42",
+   //          "inQty": "2100.000000",
+   //          "outQty": "2000.000000",
+   //          "remarks": null,
+   //          "userId": "nugroho",
+   //          "posted": "1",
+   //          "TargetEntry": null,
+   //          "UploadTime": null,
+   //          "workCenter": "ASS",
+   //          "status": "Completed",
+   //          "detail": [
+   //            {
+   //                "lineNumber": "1",
+   //                "rejectCode": "R111",
+   //                "id": "3",
+   //                "hostHeadEntry": "8863",
+   //                "rejectName": "Flow Bahan",
+   //                "rejectQty": "200"
+   //            },
+   //            {
+   //            "lineNumber": "2",
+   //            "rejectCode": "R",
+   //            "id": "3",
+   //            "hostHeadEntry": "8813",
+   //            "rejectName": "Flow",
+   //            "rejectQty": "200"
+   //        }
+   //        ],
+   //        "detail1":[
+   //           {
+   //           "hostHeadEntry": "447",
+   //          "id": "13",
+   //          "criteria": "C03",
+   //          "criteriaDesc": "CT (dtk)",
+   //          "standard": "55",
+   //          "lineNumber": 1,
+   //          "actualResult": "a",
+   //          "valueType": "P"
+   //        },
+   //        {
+   //          "hostHeadEntry": "447",
+   //          "id": "13",
+   //          "criteria": "C04",
+   //          "criteriaDesc": "Jml Cvt (Pcs)",
+   //          "standard": "2",
+   //          "lineNumber": 2,
+   //          "actualResult": "b",
+   //          "valueType": "P"
+   //        }
+   //      ]
+   //      }
