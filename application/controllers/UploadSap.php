@@ -84,323 +84,6 @@ class UploadSap extends Rest_Controller {
 /************************************************************************************/
 
 
-/******************NYOBA lagi dan lagi INSERT 3 TABEL SEKALIGUS*********************************/
-/******************udah mau bener kurang insert array*************************************/
-// public function index_post() {
-//   $this->load->model('M_uploadsap');
-
-
-//             $id = $this->input->post('id');
-//             $mobileId = $this->input->post('mobileId');
-//            $docNum = $this->input->post('docNum');
-//            $docDate = $this->input->post('docDate');
-//            $prodNo = $this->input->post('prodNo');
-//            $prodCode = $this->input->post('prodCode');
-//            $prodName = $this->input->post('prodName');
-//            $prodPlanQty = $this->input->post('prodPlanQty');
-//            $prodStatus = $this->input->post('prodStatus');
-//            $routeCode = $this->input->post('routeCode');
-//            $routeName = $this->input->post('routeName');
-//            $sequence = $this->input->post('sequence');
-//            $sequenceQty = $this->input->post('sequenceQty');
-//            $shift = $this->input->post('shift');
-//            $shiftName = $this->input->post('shiftName');
-//            $tanggalMulai = $this->input->post('tanggalMulai');
-//            $tanggalSelesai = $this->input->post('tanggalSelesai');
-//            $jamMulai = $this->input->post('jamMulai');
-//            $jamSelesai = $this->input->post('jamSelesai');
-//            $inQty = $this->input->post('inQty');
-//            $outQty = $this->input->post('outQty');
-//            $remarks = $this->input->post('remarks');
-//            $userId  = $this->input->post('userId');
-//            $posted  = $this->input->post('posted');
-//            $TargetEntry  = $this->input->post('TargetEntry');
-//            $UploadTime  = $this->input->post('UploadTime');
-//            $workCenter  = $this->input->post('workCenter');
-//            $status  = $this->input->post('status');
-  
-
-
-
-//       $lineNumber = $this->input->post('lineNumber');
-//      $rejectCode = $this->input->post('rejectCode');
-//     $id = $this->input->post('id');
-//      $hostHeadEntry = $this->input->post('hostHeadEntry');
-//       $rejectName = $this->input->post('rejectName');
-//       $rejectQty = $this->input->post('rejectQty');
-
-
-// //       /*************field criteria*************************************************************/
-// //       // $id = $this->input->post('id');
-// //       // $hostHeadEntry = $this->input->post('hostHeadEntry');
-// //       // $lineNumber = $this->post('lineNumber');
-// //       // $criteria = $this->post('criteria');
-// //       // $criteriaDesc= $this->post('criteriaDesc');
-// //       // $valueType = $this->post('valueType');
-// //       // $standard = $this->post('standard');
-// //       // $actualResult= $this->post('actualResult');
-// //       // $actualRemarks= $this->post('actualRemarks');
-
-
-//       $data1 = array($id, $docNum, $prodNo, $mobileId, $docDate, $prodCode, $prodName, $prodPlanQty, $prodStatus, $routeCode, $routeName, $sequence, $sequenceQty, $shift, $shiftName, $tanggalMulai, $tanggalSelesai, $jamMulai, $jamSelesai, $inQty, $outQty, $remarks, $userId, $posted, $TargetEntry, $UploadTime, $workCenter, $status);
-   
-
-//       $data2 = array($lineNumber, $rejectCode, $id, $rejectName, $rejectQty );
-
-//       // $data2 = json_decode(file_get_contents('php://input'), TRUE);
-
-    
-
-// //       // $data3 = array($id, $lineNumber, $criteria, $criteriaDesc, $standard, $actualResult, $actualRemarks);
-
-//       $Alldata = array($data1, $data2);
-    
-
-//     $cek = $this->M_uploadsap->addHeader($data1, $data2);
-//       // $cek = $this->M_uploadsap->addHeader($data1);
-
-//      if ($cek) {
-//          $this->response([
-//            'status' => TRUE,
-//            'message' => 'Data berhasil disimpan',
-//            'data' => $Alldata
-//          ], REST_Controller::HTTP_OK);
-//        } else{
-//          $this->response([
-//            'status' => FALSE,
-//            'message' => 'Data failed to add',
-//          ], REST_Controller::HTTP_NOT_FOUND);
-//        }
-// }
-
-
-/*************************************************nyoba input array*****************************/
-
-// public function index_post() {
-//   $this->load->model('M_uploadsap');
-
-// $data1 = [
-//             'id' => $this->input->post('id'),
-//             'mobileId' => $this->input->post('mobileId'),
-//            'docNum' => $this->input->post('docNum'),
-//            'docDate' => $this->input->post('docDate'),
-//            'prodNo' => $this->input->post('prodNo'),
-//            'prodCode' => $this->input->post('prodCode'),
-//            'prodName' => $this->input->post('prodName'),
-//            'prodPlanQty' => $this->input->post('prodPlanQty'),
-//            'prodStatus' => $this->input->post('prodStatus'),
-//            'routeCode' => $this->input->post('routeCode'),
-//            'routeName' => $this->input->post('routeName'),
-//            'sequence' => $this->input->post('sequence'),
-//            'sequenceQty' => $this->input->post('sequenceQty'),
-//            'shift' => $this->input->post('shift'),
-//            'shiftName' => $this->input->post('shiftName'),
-//            'tanggalMulai' => $this->input->post('tanggalMulai'),
-//            'tanggalSelesai' => $this->input->post('tanggalSelesai'),
-//            'jamMulai' => $this->input->post('jamMulai'),
-//            'jamSelesai' => $this->input->post('jamSelesai'),
-//            'inQty' => $this->input->post('inQty'),
-//            'outQty' => $this->input->post('outQty'),
-//            'remarks' => $this->input->post('remarks'),
-//            'userId'  => $this->input->post('userId'),
-//            'posted'  => $this->input->post('posted'),
-//            'TargetEntry'  => $this->input->post('TargetEntry'),
-//            'UploadTime'  => $this->input->post('UploadTime'),
-//            'workCenter'  => $this->input->post('workCenter'),
-//            'status'  => $this->input->post('status'),
-//          ];
-  
-
-
-// $data2 = [
-//       $lineNumber = $this->input->post('lineNumber'),
-//      $rejectCode = $this->input->post('rejectCode'),
-//     $id = $this->input->post('id'),
-//      $hostHeadEntry = $this->input->post('hostHeadEntry'),
-//       $rejectName = $this->input->post('rejectName'),
-//       $rejectQty = $this->input->post('rejectQty')
-//     ];
-
-
-// //       /*************field criteria*************************************************************/
-// //       // $id = $this->input->post('id');
-// //       // $hostHeadEntry = $this->input->post('hostHeadEntry');
-// //       // $lineNumber = $this->post('lineNumber');
-// //       // $criteria = $this->post('criteria');
-// //       // $criteriaDesc= $this->post('criteriaDesc');
-// //       // $valueType = $this->post('valueType');
-// //       // $standard = $this->post('standard');
-// //       // $actualResult= $this->post('actualResult');
-// //       // $actualRemarks= $this->post('actualRemarks');
-
-
-//       // $data1 = array($id, $docNum, $prodNo, $mobileId, $docDate, $prodCode, $prodName, $prodPlanQty, $prodStatus, $routeCode, $routeName, $sequence, $sequenceQty, $shift, $shiftName, $tanggalMulai, $tanggalSelesai, $jamMulai, $jamSelesai, $inQty, $outQty, $remarks, $userId, $posted, $TargetEntry, $UploadTime, $workCenter, $status);
-   
-
-//       $data2 = array($lineNumber, $rejectCode, $id, $rejectName, $rejectQty );
-
-//       // $data2 = json_decode(file_get_contents('php://input'), TRUE);
-
-    
-
-// //       // $data3 = array($id, $lineNumber, $criteria, $criteriaDesc, $standard, $actualResult, $actualRemarks);
-
-//       $Alldata = array($data1, $data2);
-    
-
-//     $cek = $this->M_uploadsap->addHeader($data1, $data2);
-//       // $cek = $this->M_uploadsap->addHeader($data1);
-
-//      if ($cek) {
-//          $this->response([
-//            'status' => TRUE,
-//            'message' => 'Data berhasil disimpan',
-//            'data' => $Alldata
-//          ], REST_Controller::HTTP_OK);
-//        } else{
-//          $this->response([
-//            'status' => FALSE,
-//            'message' => 'Data failed to add',
-//          ], REST_Controller::HTTP_NOT_FOUND);
-//        }
-// }
-
-
-
-/****************nyoba input array baru***********************************/
-// public function index_post() {
-// $this->load->model('M_uploadsap');
-
-// $data = array(
-
-// 'id' => $id,
-//             'mobileId' => $mobileId,
-//            'docNum' => $docNum,
-//            'docDate' => $docDate,
-//            'prodNo' => $prodNo,
-//            'prodCode' => $prodCode,
-//            'prodName' => $prodName,
-//            'prodPlanQty' => $prodPlanQty,
-//            'prodStatus' => $prodStatus,
-//            'routeCode' => $routeCode,
-//            'routeName' => $routeName,
-//            'sequence' => $sequence,
-//            'sequenceQty' => $sequenceQty,
-//            'shift' => $shift,
-//            'shiftName' => $shiftName,
-//            'tanggalMulai' => $tanggalMulai,
-//            'tanggalSelesai' => $tanggalSelesai,
-//            'jamMulai' => $jamMulai,
-//            'jamSelesai' => $jamSelesai,
-//            'inQty' => $inQty,
-//            'outQty' => $outQty,
-//            'remarks' => $remarks,
-//            'userId'  => $userId,
-//            'posted'  => $posted,
-//            'TargetEntry'  => $TargetEntry,
-//            'UploadTime'  => $UploadTime,
-//            'workCenter'  => $workCenter,
-//            'status'  => $status,
-
-
-// array(
-//  'id' => $id,
-//       'hostHeadEntry' => $hostHeadEntry,
-//       'lineNumber' => $lineNumber,
-//       'criteria' => $criteria,
-//       'criteriaDesc' => $criteriaDesc,
-//       'valueType' => $valueType,
-//       'standard' => $standard,
-//       'actualResult' => $actualResult,
-//       'actualRemarks' => $actualRemarks
-// )
-// );
-
-// // $this->db->insert_batch('STEM_MOBILE_SHOPFLOORHEADER', $data);
-
-// $cek=$this->M_uploadsap->addHeader($data);
-
-//  if ($cek) {
-//          $this->response([
-//            'status' => TRUE,
-//            'message' => 'Data berhasil disimpan',
-//            'data' => $Alldata
-//          ], REST_Controller::HTTP_OK);
-//        } else{
-//          $this->response([
-//            'status' => FALSE,
-//            'message' => 'Data failed to add',
-//          ], REST_Controller::HTTP_NOT_FOUND);
-//        }
-// }
-
-
-/************************************************************/
-// public function index_post() {
-
-// $this->load->model('M_uploadsap');
-
-// $data1 = [
-//     //      // 'docEntry' => $this->post('docEntry'),
-//            'id' => $this->post('id'),
-//             'mobileId' => $this->post('mobileId'),
-//            'docNum' => $this->post('docNum'),
-//            'docDate' => $this->post('docDate'),
-//            'prodNo' => $this->post('prodNo'),
-//            'prodCode' => $this->post('prodCode'),
-//            'prodName' => $this->post('prodName'),
-//            'prodPlanQty' => $this->post('prodPlanQty'),
-//            'prodStatus' => $this->post('prodStatus'),
-//            'routeCode' => $this->post('routeCode'),
-//            'routeName' => $this->post('routeName'),
-//            'sequence' => $this->post('sequence'),
-//            'sequenceQty' => $this->post('sequenceQty'),
-//            'shift' => $this->post('shift'),
-//            'shiftName' => $this->post('shiftName'),
-//            'tanggalMulai' => $this->post('tanggalMulai'),
-//            'tanggalSelesai' => $this->post('tanggalSelesai'),
-//            'jamMulai' => $this->post('jamMulai'),
-//            'jamSelesai' => $this->post('jamSelesai'),
-//            'inQty' => $this->post('inQty'),
-//            'outQty' => $this->post('outQty'),
-//            'remarks' => $this->post('remarks'),
-//            'userId'  => $this->post('userId'),
-//            // 'QcName'  => $this->post('QcName'),
-//            'posted'  => $this->post('posted'),
-//            'TargetEntry'  => $this->post('TargetEntry'),
-//            'UploadTime'  => $this->post('UploadTime'),
-//            'workCenter'  => $this->post('workCenter'),
-//            'status'  => $this->post('status')
-//        ];
-
-//        $data2 = array();
-//        $data2[] = [
-//           'lineNumber' => $this->input->post('lineNumber'),
-//           'rejectCode' => $this->input->post('rejectCode'),
-//           'id' => $this->input->post('id'),
-//           'hostHeadEntry' => $this->input->post('hostHeadEntry'),
-//           'rejectName' => $this->input->post('rejectName'),
-//           'rejectQty' => $this->input->post('rejectQty')
-//     ];
-
-
-//        $cek = $this->M_uploadsap->addHeader($data1, $data2);
-//        if ($cek) {
-//          $this->response([
-//            'status' => TRUE,
-//            'message' => 'Data berhasil disimpan',
-//            'data' => $cek
-//          ], REST_Controller::HTTP_OK);
-//        } else{
-//          $this->response([
-//            'status' => FALSE,
-//            'message' => 'Data failed to add',
-//          ], REST_Controller::HTTP_NOT_FOUND);
-//        }
-
-// }
-
-/***********************************************************************/
 
 /***********SUDAH BENAR KURANG CRITERIA*************************/
 // public function index_post() {
@@ -465,6 +148,69 @@ class UploadSap extends Rest_Controller {
 // }
 /*****************************************************/
 
+/******************bener banget************************************/
+// public function index_post() {
+
+// // $this->load->model('M_uploadsap');
+
+// $data = json_decode(file_get_contents('php://input'), TRUE);
+// $data1 = [
+//     //      // 'docEntry' => $this->post('docEntry'),
+//            'id' => $data['id'],
+//             'mobileId' => $data['mobileId'],
+//            'docNum' => $data['docNum'],
+//            'docDate' => $data['docDate'],
+//            'prodNo' => $data['prodNo'],
+//            'prodCode' => $data['prodCode'],
+//            'prodName' => $data['prodName'],
+//            'prodPlanQty' => $data['prodPlanQty'],
+//            'prodStatus' => $data['prodStatus'],
+//            'routeCode' => $data['routeCode'],
+//            'routeName' => $data['routeName'],
+//            'sequence' => $data['sequence'],
+//            'sequenceQty' => $data['sequenceQty'],
+//            'shift' => $data['shift'],
+//            'shiftName' => $data['shiftName'],
+//            'tanggalMulai' => $data['tanggalMulai'],
+//            'tanggalSelesai' => $data['tanggalSelesai'],
+//            'jamMulai' => $data['jamMulai'],
+//            'jamSelesai' => $data['jamSelesai'],
+//            'inQty' => $data['inQty'],
+//            'outQty' => $data['outQty'],
+//            'remarks' => $data['remarks'],
+//            'userId'  => $data['userId'],
+//            // 'QcName'  => $this->post('QcName'),
+//            'posted'  => $data['posted'],
+//            'TargetEntry'  => $data['TargetEntry'],
+//            'UploadTime'  => $data['UploadTime'],
+//            'workCenter'  => $data['workCenter'],
+//            'status'  => $data['status']
+//        ];
+       
+
+//        $data2 = array();
+//        $data2 = $data['detail'];
+
+//        $data3 = array();
+//        $data3 = $data['detail1'];
+   
+//        $dataArr = array($data1, $data2, $data3);
+
+//        $cek = $this->M_uploadsap->addHeader($data1, $data2, $data3);
+//        if ($cek) {
+//          $this->response([
+//            'status' => TRUE,
+//            'message' => 'Data berhasil disimpan',
+//            'data' => $cek
+//          ], REST_Controller::HTTP_OK);
+//        } else{
+//          $this->response([
+//            'status' => FALSE,
+//            'message' => 'Data failed to add',
+//          ], REST_Controller::HTTP_NOT_FOUND);
+//        }
+
+// }
 
 public function index_post() {
 
@@ -505,15 +251,12 @@ $data1 = [
        ];
        
 
-       $data2 = array();
-       $data2 = $data['detail'];
-
        $data3 = array();
        $data3 = $data['detail1'];
    
-       $dataArr = array($data1, $data2, $data3);
+       $dataArr = array($data1, $data3);
 
-       $cek = $this->M_uploadsap->addHeader($data1, $data2, $data3);
+       $cek = $this->M_uploadsap->addHeader($data1, $data3);
        if ($cek) {
          $this->response([
            'status' => TRUE,
