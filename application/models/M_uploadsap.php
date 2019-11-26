@@ -90,45 +90,17 @@ function read($workCenter) {
 // }
 /*******************************************************************/
 
-// function addHeader($data1, $data2, $data3) {
-//   $this->db->trans_start();
-
-//   $this->db->insert('STEM_MOBILE_SHOPFLOORHEADER', $data1);
-//   $docEntry_header = $this->db->insert_id();
-
-//   for($i = 0; $i < count($data2); $i++) {
-//     $data2[$i]['hostHeadEntry'] = $docEntry_header;
-//   }
-
-// 	$this->db->insert_batch('STEM_MOBILE_SHOPFLOORLINESREJECT', $data2);
-
-// 	 for($i = 0; $i < count($data3); $i++) {
-//     $data3[$i]['hostHeadEntry'] = $docEntry_header;
-//   }
-//   	$this->db->insert_batch('STEM_MOBILE_SHOPFLOORLINESCRITERIA', $data3);
-
-
-//    $dataArr = array($data1, $data2, $data3);
-
-//    if ($this->db->trans_status() === FALSE) {
-//      # something went wrong
-//     $this->db->trans_rollback();
-//     return FALSE;
-//    } else {
-//     # everithing is perfect
-//     $this->db->trans_commit();
-//     return $dataArr;
-    
-//    }
-
-// }
-
-function addHeader($data1, $data3) {
+function addHeader($data1, $data2, $data3) {
   $this->db->trans_start();
 
   $this->db->insert('STEM_MOBILE_SHOPFLOORHEADER', $data1);
   $docEntry_header = $this->db->insert_id();
 
+  for($i = 0; $i < count($data2); $i++) {
+    $data2[$i]['hostHeadEntry'] = $docEntry_header;
+  }
+
+	$this->db->insert_batch('STEM_MOBILE_SHOPFLOORLINESREJECT', $data2);
 
 	 for($i = 0; $i < count($data3); $i++) {
     $data3[$i]['hostHeadEntry'] = $docEntry_header;
@@ -136,7 +108,7 @@ function addHeader($data1, $data3) {
   	$this->db->insert_batch('STEM_MOBILE_SHOPFLOORLINESCRITERIA', $data3);
 
 
-   $dataArr = array($data1, $data3);
+   $dataArr = array($data1, $data2, $data3);
 
    if ($this->db->trans_status() === FALSE) {
      # something went wrong
@@ -150,6 +122,36 @@ function addHeader($data1, $data3) {
    }
 
 }
+
+// function addHeader($data1, $data3) {
+//   $this->db->trans_start();
+
+//   $this->db->insert('STEM_MOBILE_SHOPFLOORHEADER', $data1);
+//   $docEntry_header = $this->db->insert_id();
+ 
+
+
+// 	 for($i = 0; $i < count($data3); $i++) {
+//     $data3[$i]['hostHeadEntry'] = $docEntry_header;
+
+//   }
+//   	$this->db->insert_batch('STEM_MOBILE_SHOPFLOORLINESCRITERIA', $data3);
+
+
+//    $dataArr = array($data1, $data3);
+
+//    if ($this->db->trans_status() === FALSE) {
+//      # something went wrong
+//     $this->db->trans_rollback();
+//     return FALSE;
+//    } else {
+//     # everithing is perfect
+//     $this->db->trans_commit();
+//     return $dataArr;
+    
+//    }
+
+// }
 
 function putHeader($data, $docEntry) {
 	 // $this->db->update('IPP_MOBILE_SHOPFLOORHEADER', $data,['docEntry'=> $docEntry]);

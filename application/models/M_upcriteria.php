@@ -4,7 +4,8 @@ defined('BASEPATH') OR exit ('No direct script access allowed');
 class M_upcriteria extends CI_Model {
 	function read($hostHeadEntry) {
 		// $query = $this->db->query("SELECT * FROM STEM_MOBILE_SHOPFLOORLINESREJECT");
-		$query = $this->db->query("SELECT * FROM STEM_MOBILE_SHOPFLOORLINESCRITERIA where hostHeadEntry='$hostHeadEntry'");
+		// $query = $this->db->query("SELECT * FROM STEM_MOBILE_SHOPFLOORLINESCRITERIA where hostHeadEntry='$hostHeadEntry'");
+		$query = $this->db->query("SELECT * FROM IPP_MOBILE_SHOPFLOORLINESCRITERIA where hostHeadEntry='$hostHeadEntry'");
 
 		
 
