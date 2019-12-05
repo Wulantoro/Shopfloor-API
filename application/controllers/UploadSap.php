@@ -7,7 +7,6 @@ class UploadSap extends Rest_Controller {
 
 	function __construct() {
 		parent::__construct();
-    // $this->param->array();
 		$this->load->database();
 		$this->load->model('M_uploadsap');
 		}
@@ -31,6 +30,193 @@ class UploadSap extends Rest_Controller {
 			}
 
 		}
+
+
+  public function index_post() {
+
+  $data = json_decode(file_get_contents('php://input'), true);
+
+      $data1 = [
+        'id' => $data['id'],
+           'docNum' => $data['docNum'],
+           'docDate' =>$data['docDate'],
+           'prodNo' => $data['prodNo'],
+           'prodCode' => $data['prodCode'],
+           'prodName' => $data['prodName'],
+           'prodPlanQty' => $data['prodPlanQty'],
+           'prodStatus' => $data['prodStatus'],
+           'routeCode' => $data['routeCode'],
+           'routeName' => $data['routeName'],
+           'sequence' => $data['sequence'],
+           'sequenceQty' => $data['sequenceQty'],
+           'shift' => $data['shift'],
+           'shiftName' => $data['shiftName'],
+           'tanggalMulai' => $data['tanggalMulai'],
+           'tanggalSelesai' => $data['tanggalSelesai'],
+           'jamMulai' => $data['jamMulai'],
+           'jamSelesai' => $data['jamSelesai'],
+           'inQty' => $data['inQty'],
+           'outQty' => $data['outQty'],
+           'userId'  => $data['userId'],
+           // 'remarks' => $data['remarks'],
+           'mobileId' => $data['mobileId'],
+           'posted'  => $data['posted'],
+           'workCenter'  => $data['workCenter'],
+           'status'  => $data['status']
+          
+       ];
+
+      $data2 = array();
+      $data2 = $data['detail'];
+
+      $data3 = array();
+      $data3 = $data['detail1'];
+     
+
+     $dataArr = array($data1, $data2, $data3);
+
+       $cek = $this->M_uploadsap->addHeader($data1, $data2, $data3);
+      
+       if ($cek!==FALSE) {
+        $this->response([
+          'status' => TRUE,
+          'message' => 'Data berhasil disimpan',
+          'data' => $cek
+        ], REST_Controller::HTTP_OK);
+       } else{
+        $this->response([
+          'status' => FALSE,
+          'message' => 'Data failed to add',
+        ], REST_Controller::HTTP_NOT_FOUND);
+       }
+    }
+
+  
+
+/**************ga ada errore bener banget****************************/
+  // public function index_post() {
+
+  // $data = json_decode(file_get_contents('php://input'), true);
+  // //$data = json_encode($data);
+
+  // //var_dump($data['detail']);
+  // //exit;
+  // //exit;
+
+  //     $data1 = [
+  //       'id' => $data['id'],
+  //          'docNum' => $data['docNum'],
+  //          'docDate' =>$data['docDate'],
+  //          'prodNo' => $data['prodNo'],
+  //          'prodCode' => $data['prodCode'],
+  //          'prodName' => $data['prodName'],
+  //          'prodPlanQty' => $data['prodPlanQty'],
+  //          'prodStatus' => $data['prodStatus'],
+  //          'routeCode' => $data['routeCode'],
+  //          'routeName' => $data['routeName'],
+  //          'sequence' => $data['sequence'],
+  //          'sequenceQty' => $data['sequenceQty'],
+  //          'shift' => $data['shift'],
+  //          'shiftName' => $data['shiftName'],
+  //          'tanggalMulai' => $data['tanggalMulai'],
+  //          'tanggalSelesai' => $data['tanggalSelesai'],
+  //          'jamMulai' => $data['jamMulai'],
+  //          'jamSelesai' => $data['jamSelesai'],
+  //          'inQty' => $data['inQty'],
+  //          'outQty' => $data['outQty'],
+  //          'userId'  => $data['userId'],
+  //          // 'remarks' => $data['remarks'],
+  //          'mobileId' => $data['mobileId'],
+  //          'posted'  => $data['posted'],
+  //          'workCenter'  => $data['workCenter'],
+  //          'status'  => $data['status']
+          
+  //      ];
+
+  //     $data2 = array();
+  //     $data2 = $data['detail'];
+  //    //   $data2[] = [
+  //    //    'hostHeadEntry' => $this->input->post('hostHeadEntry'),
+  //    //    'lineNumber' => $this->input->post('lineNumber'),
+  //    //    'rejectCode' => $this->input->post('rejectCode'),
+  //    //    'id' => $this->input->post('id'),
+  //    //    'rejectName' => $this->input->post('rejectName'),
+  //    // ];
+
+  //    $dataArr = array($data1, $data2);
+
+  //      $cek = $this->M_uploadsap->addHeader($data1, $data2);
+  //      // $cek = $this->M_uploadsap->addHeader($data1);
+  //      if ($cek!==FALSE) {
+  //       $this->response([
+  //         'status' => TRUE,
+  //         'message' => 'Data berhasil disimpan',
+  //         'data' => $cek
+  //       ], REST_Controller::HTTP_OK);
+  //      } else{
+  //       $this->response([
+  //         'status' => FALSE,
+  //         'message' => 'Data failed to add',
+  //       ], REST_Controller::HTTP_NOT_FOUND);
+  //      }
+  //   }
+
+    // public function index_post() {
+
+    //   $data = json_decode(file_get_contents('php://input'), true);
+
+    //   $data1 = [
+        // 'id' => $data['id'],
+        //     'mobileId' => $data['mobileId'],
+        //    'docNum' => $data['docNum'],
+        //    'docDate' => $data['docDate'],
+        //    'prodNo' => $data['prodNo'],
+        //    'prodCode' => $data['prodCode'],
+        //    'prodName' => $data['prodName'],
+        //    'prodPlanQty' => $data['prodPlanQty'],
+        //    'prodStatus' => $data['prodStatus'],
+        //    'routeCode' => $data['routeCode'],
+        //    'routeName' => $data['routeName'],
+        //    'sequence' => $data['sequence'],
+        //    'sequenceQty' => $data['sequenceQty'],
+        //    'shift' => $data['shift'],
+        //    'shiftName' => $data['shiftName'],
+        //    'tanggalMulai' => $data['tanggalMulai'],
+        //    'tanggalSelesai' => $data['tanggalSelesai'],
+        //    'jamMulai' => $data['jamMulai'],
+        //    'jamSelesai' => $data['jamSelesai'],
+        //    'inQty' => $data['inQty'],
+        //    'outQty' => $data['outQty'],
+        //    'remarks' => $data['remarks'],
+        //    'userId'  => $data['userId'],
+        //    // 'QcName'  => $this->post('QcName'),
+        //    'posted'  => $data['posted'],
+        //    'TargetEntry'  => $data['TargetEntry'],
+        //    'UploadTime'  => $data['UploadTime'],
+        //    'workCenter'  => $data['workCenter'],
+        //    'status'  => $data['status']
+    //   ];
+
+    //   $data2 = array();
+    //   $data2 = $data['detail'];
+
+    //   $dataArr = array($data1, $data2);
+
+    //   $cek = $this->M_uploadsap->addHeader($data1, $data2);
+    //   if ($cek !== false) {
+    //     # code...
+    //     $this->response([
+    //       'status' => true,
+    //       'message' => 'Data berhasil disimpan',
+    //       'data' => $cek
+    //     ], REST_Controller::HTTP_OK);
+    //   } else {
+    //     $this->response([
+    //       'status' => false,
+    //       'message' => 'Data failed to add',
+    //     ], REST_Controller::HTTP_NOT_FOUND);
+    //   }
+    // }
 
 
 /*********************LAMA*****************************/
@@ -85,7 +271,7 @@ class UploadSap extends Rest_Controller {
 
 
 
-/***********SUDAH BENAR KURANG CRITERIA*************************/
+/******************bener banget************************************/
 // public function index_post() {
 
 // // $this->load->model('M_uploadsap');
@@ -114,7 +300,7 @@ class UploadSap extends Rest_Controller {
 //            'jamSelesai' => $data['jamSelesai'],
 //            'inQty' => $data['inQty'],
 //            'outQty' => $data['outQty'],
-//            'remarks' => $data['remarks'],
+//            // 'remarks' => $data['remarks'],   >>>> dlogok
 //            'userId'  => $data['userId'],
 //            // 'QcName'  => $this->post('QcName'),
 //            'posted'  => $data['posted'],
@@ -128,10 +314,12 @@ class UploadSap extends Rest_Controller {
 //        $data2 = array();
 //        $data2 = $data['detail'];
 
-       
-//        $dataArr = array($data1, $data2);
+//        $data3 = array();
+//        $data3 = $data['detail1'];
+   
+//        $dataArr = array($data1, $data2, $data3);
 
-//        $cek = $this->M_uploadsap->addHeader($data1, $data2);
+//        $cek = $this->M_uploadsap->addHeader($data1, $data2, $data3);
 //        if ($cek) {
 //          $this->response([
 //            'status' => TRUE,
@@ -146,77 +334,14 @@ class UploadSap extends Rest_Controller {
 //        }
 
 // }
-/*****************************************************/
 
-/******************bener banget************************************/
-public function index_post() {
 
-// $this->load->model('M_uploadsap');
-
-$data = json_decode(file_get_contents('php://input'), TRUE);
-$data1 = [
-    //      // 'docEntry' => $this->post('docEntry'),
-           'id' => $data['id'],
-            'mobileId' => $data['mobileId'],
-           'docNum' => $data['docNum'],
-           'docDate' => $data['docDate'],
-           'prodNo' => $data['prodNo'],
-           'prodCode' => $data['prodCode'],
-           'prodName' => $data['prodName'],
-           'prodPlanQty' => $data['prodPlanQty'],
-           'prodStatus' => $data['prodStatus'],
-           'routeCode' => $data['routeCode'],
-           'routeName' => $data['routeName'],
-           'sequence' => $data['sequence'],
-           'sequenceQty' => $data['sequenceQty'],
-           'shift' => $data['shift'],
-           'shiftName' => $data['shiftName'],
-           'tanggalMulai' => $data['tanggalMulai'],
-           'tanggalSelesai' => $data['tanggalSelesai'],
-           'jamMulai' => $data['jamMulai'],
-           'jamSelesai' => $data['jamSelesai'],
-           'inQty' => $data['inQty'],
-           'outQty' => $data['outQty'],
-           'remarks' => $data['remarks'],
-           'userId'  => $data['userId'],
-           // 'QcName'  => $this->post('QcName'),
-           'posted'  => $data['posted'],
-           'TargetEntry'  => $data['TargetEntry'],
-           'UploadTime'  => $data['UploadTime'],
-           'workCenter'  => $data['workCenter'],
-           'status'  => $data['status']
-       ];
-       
-
-       $data2 = array();
-       $data2 = $data['detail'];
-
-       $data3 = array();
-       $data3 = $data['detail1'];
-   
-       $dataArr = array($data1, $data2, $data3);
-
-       $cek = $this->M_uploadsap->addHeader($data1, $data2, $data3);
-       if ($cek) {
-         $this->response([
-           'status' => TRUE,
-           'message' => 'Data berhasil disimpan',
-           'data' => $cek
-         ], REST_Controller::HTTP_OK);
-       } else{
-         $this->response([
-           'status' => FALSE,
-           'message' => 'Data failed to add',
-         ], REST_Controller::HTTP_NOT_FOUND);
-       }
-
-}
 
 // public function index_post() {
 
-// // $this->load->model('M_uploadsap');
+// $this->load->model('M_uploadsap');
 
-// $data = json_decode(file_get_contents('php://input'), TRUE);
+// $data = json_decode(file_get_contents('php://input'), true);
 // $data1 = [
 //     //      // 'docEntry' => $this->post('docEntry'),
 //            'id' => $data['id'],
@@ -257,7 +382,7 @@ $data1 = [
 //        $dataArr = array($data1, $data3);
 
 //        $cek = $this->M_uploadsap->addHeader($data1, $data3);
-//        if ($cek) {
+//        if ($cek !== FALSE) {
 //          $this->response([
 //            'status' => TRUE,
 //            'message' => 'Data berhasil disimpan',
@@ -271,6 +396,7 @@ $data1 = [
 //        }
 
 // }
+
 
     public function index_put() {
       $data = [

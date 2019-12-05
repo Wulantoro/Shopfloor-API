@@ -14,6 +14,75 @@ function read($workCenter) {
 		return $query->result_array();
 }
 
+
+
+function addHeader($data1, $data2, $data3) {
+	$this->db->trans_start();
+	// $sql1 = "INSERT INTO stem_mobile_shopfloorheader (docNum, prodNo, docDate) VALUES(?,?,?)";
+	// $this->db->query($sql1, $data1);
+
+	//var_dump($data1);
+	//exit;
+
+	$this->db->insert('stem_mobile_shopfloorheader', $data1);
+	$docEntry_header = $this->db->insert_id();
+
+	//$count = $data2['lineNumber'];
+	//var_dump(count($data2['hostHeadEntry']));
+	//exit;	
+
+	// $count = 0;
+	// foreach ($data2 as $type) {
+	//     $count+= count($type);
+	// }
+
+
+
+	for($i=0;$i<count($data2);$i++){
+		$data2[$i]['hostHeadEntry'] = $docEntry_header;
+	}
+
+	 //var_dump($data2);
+	 //exit;
+
+	//perintah insesrt bacth data2 dibawah sini
+	$this->db->insert_batch('stem_mobile_shopfloorlinesreject', $data2);
+
+
+	for($i = 0; $i < count($data3); $i++) {
+		$data3[$i]['hostHeadEntry'] = $docEntry_header;
+	}
+	$this->db->insert_batch('STEM_MOBILE_SHOPFLOORLINESCRITERIA', $data3);
+
+
+// $sql2 = "INSERT INTO stem_mobile_shopfloorlinesreject (hostHeadEntry,lineNumber,rejectCode,id,rejectName) VALUES ($docEntry_header,?,?,?,?)";
+// 	$this->db->query($sql2, $data2);
+	
+
+	//$this->db->update('stem_mobile_shopfloorlinesreject', $data2,['hostHeadEntry'=> $docEntry_header]);
+
+	$dataArr = array($data1, $data2, $data3);
+
+	if ($this->db->trans_status() === FALSE) {
+    # Something went wrong.
+    	$this->db->trans_rollback();
+    	return FALSE;
+	} 
+	else {
+	    # Everything is Perfect. 
+	    # Committing data to the database.
+	    $this->db->trans_commit();
+	    return $dataArr;
+	}
+	
+	
+
+ 	
+ //return $this->db->affected_rows(); 
+}
+
+
+
 /*********************berner8 lama******************/
 	// function addHeader($data) {
 		
@@ -88,40 +157,110 @@ function read($workCenter) {
 //    }
 
 // }
+
+
+
+/*******************bener ga ada errorrr jos*********************************************/
+// function addHeader($data1, $data2) {
+// 	$this->db->trans_start();
+// 	// $sql1 = "INSERT INTO stem_mobile_shopfloorheader (docNum, prodNo, docDate) VALUES(?,?,?)";
+// 	// $this->db->query($sql1, $data1);
+
+// 	//var_dump($data1);
+// 	//exit;
+
+// 	$this->db->insert('stem_mobile_shopfloorheader', $data1);
+// 	$docEntry_header = $this->db->insert_id();
+
+// 	//$count = $data2['lineNumber'];
+// 	//var_dump(count($data2['hostHeadEntry']));
+// 	//exit;	
+
+// 	// $count = 0;
+// 	// foreach ($data2 as $type) {
+// 	//     $count+= count($type);
+// 	// }
+
+
+
+// 	for($i=0;$i<count($data2);$i++){
+// 		$data2[$i]['hostHeadEntry'] = $docEntry_header;
+// 	}
+
+// 	 //var_dump($data2);
+// 	 //exit;
+
+// 	//perintah insesrt bacth data2 dibawah sini
+// 	$this->db->insert_batch('stem_mobile_shopfloorlinesreject', $data2);
+
+
+// // $sql2 = "INSERT INTO stem_mobile_shopfloorlinesreject (hostHeadEntry,lineNumber,rejectCode,id,rejectName) VALUES ($docEntry_header,?,?,?,?)";
+// // 	$this->db->query($sql2, $data2);
+	
+
+// 	//$this->db->update('stem_mobile_shopfloorlinesreject', $data2,['hostHeadEntry'=> $docEntry_header]);
+
+// 	$dataArr = array($data1, $data2);
+
+// 	if ($this->db->trans_status() === FALSE) {
+//     # Something went wrong.
+//     	$this->db->trans_rollback();
+//     	return FALSE;
+// 	} 
+// 	else {
+// 	    # Everything is Perfect. 
+// 	    # Committing data to the database.
+// 	    $this->db->trans_commit();
+// 	    return $dataArr;
+// 	}
+	
+	
+
+ 	
+//  //return $this->db->affected_rows(); 
+// }
+
+
 /*******************************************************************/
 
-function addHeader($data1, $data2, $data3) {
-  $this->db->trans_start();
 
-  $this->db->insert('STEM_MOBILE_SHOPFLOORHEADER', $data1);
-  $docEntry_header = $this->db->insert_id();
+/*************yang ini yang di pake*****************************/
+// function addHeader($data1, $data2, $data3) {
+//   $this->db->trans_start();
 
-  for($i = 0; $i < count($data2); $i++) {
-    $data2[$i]['hostHeadEntry'] = $docEntry_header;
-  }
+//   $this->db->insert('STEM_MOBILE_SHOPFLOORHEADER', $data1);
+//   $docEntry_header = $this->db->insert_id();
 
-	$this->db->insert_batch('STEM_MOBILE_SHOPFLOORLINESREJECT', $data2);
+//   for($i = 0; $i < count($data2); $i++) {
+  	
+//   		$data2[$i]['hostHeadEntry'] = $docEntry_header;
 
-	 for($i = 0; $i < count($data3); $i++) {
-    $data3[$i]['hostHeadEntry'] = $docEntry_header;
-  }
-  	$this->db->insert_batch('STEM_MOBILE_SHOPFLOORLINESCRITERIA', $data3);
-
-
-   $dataArr = array($data1, $data2, $data3);
-
-   if ($this->db->trans_status() === FALSE) {
-     # something went wrong
-    $this->db->trans_rollback();
-    return FALSE;
-   } else {
-    # everithing is perfect
-    $this->db->trans_commit();
-    return $dataArr;
     
-   }
+//   }
 
-}
+// 	$this->db->insert_batch('STEM_MOBILE_SHOPFLOORLINESREJECT', $data2);
+
+// 	 for($i = 0; $i < count($data3); $i++) {
+//     $data3[$i]['hostHeadEntry'] = $docEntry_header;
+//   }
+//   	$this->db->insert_batch('STEM_MOBILE_SHOPFLOORLINESCRITERIA', $data3);
+
+
+//    $dataArr = array($data1, $data2, $data3);
+
+//    if ($this->db->trans_status() === FALSE) {
+//      # something went wrong
+//     $this->db->trans_rollback();
+//     return FALSE;
+//    } else {
+//     # everithing is perfect
+//     $this->db->trans_commit();
+//     return $dataArr;
+    
+//    }
+
+// }
+
 
 // function addHeader($data1, $data3) {
 //   $this->db->trans_start();
