@@ -104,6 +104,26 @@ class Upcriteria extends REST_Controller {
 		}
 
 		}
+
+		public function index_put() {
+			$data = json_decode(file_get_contents('php://input'), TRUE);
+			$hostHeadEntry = $this->put('hostHeadEntry');
+			$cek = $this->M_upcriteria->putCriteria($data, $hostHeadEntry);
+
+			if ($cek > 0) {
+				# code...
+				$this->response([
+					'status' => TRUE,
+					'message' => 'Criteria berhasil dihapus',
+					'data' => $data
+				], REST_Controller::HTTP_OK);
+			}else {
+				$this->response([
+					'status' => FALSE,
+					'message' => 'Data failed to edit',
+				], REST_Controller::HTTP_NOT_FOUND);
+			}
+		}
 	}
 
 

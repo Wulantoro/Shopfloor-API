@@ -151,7 +151,7 @@ left join [@ST_UDWC] E ON E.code = b.U_WCCode
 left join [@ST_UDRTH] F ON F.Code = b.U_Reference
 left join [@STEM_PRODCARDH] g on g.U_PD_Entry = c.DocEntry
 left join [@STEM_PRODCARDD] h on h.DocEntry = g.DocEntry and h.U_Sequence=a.U_Sequence
-LEFT JOIN [@ASTEM_STDSPEC] i on i.U_ItemCode = c.ItemCode and i.U_WCCode = b.U_WCCode
+LEFT JOIN [@STEM_STDSPEC] i on i.U_ItemCode = c.ItemCode and i.U_WCCode = b.U_WCCode
 -- LEFT JOIN IPP_MOBILE_SHOPFLOORDETAIL1 j on j.DocEntry = a.DocEntry
 LEFT JOIN STEM_MOBILE_SHOPFLOORLINESCRITERIA j on j.DocEntry = a.DocEntry
 

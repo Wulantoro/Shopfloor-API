@@ -49,5 +49,11 @@ class M_upcriteria extends CI_Model {
 		return $this->db->insert_batch('IPP_MOBILE_SHOPFLOORLINESCRITERIA', $data);
 	}
 
+	public function putCriteria($data, $docEntry) {
+		$this->db->update_batch('IPP_MOBILE_SHOPFLOORLINESCRITERIA', $data,['docEntry' => $docEntry]);
+
+		return $this->db->affected_rows();
+	}
+
 
 	}

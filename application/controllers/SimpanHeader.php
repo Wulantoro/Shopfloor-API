@@ -127,4 +127,22 @@ class SimpanHeader extends Rest_Controller {
         ], REST_Controller::HTTP_NOT_FOUND);
        }
     }
+
+    public function index_delete() {
+      $docEntry = $this->input->get('docEntry');
+      $cek = $this->M_simpanheader->deleteHeader($docEntry);
+
+      if ($cek > 0) {
+        # code...
+        $this->response([
+          'status' => false,
+          'message' => 'Header gagal dihapus'
+        ], REST_Controller::HTTP_NOT_FOUND);
+      } else {
+        $this->response([
+          'status' => TRUE,
+          'message' => 'header berhasil dihapus'
+        ], REST_Controller::HTTP_OK);
+      }
+    }
 	}

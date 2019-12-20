@@ -8,7 +8,7 @@ function read($workCenter) {
 	// $this->db->where('docEntry', '138');
 	// return $this->db->get('STEM_MOBILE_SHOPFLOORHEADER')->result_array();
 		// $this->db->where("status", "0" and "workCenter", "$workCenter");
-		$query = $this->db->query("SELECT * FROM IPP_MOBILE_SHOPFLOORHEADER WHERE posted = '0' AND workCenter = '$workCenter' ORDER BY docEntry DESC" );
+		$query = $this->db->query("SELECT * FROM IPP_MOBILE_SHOPFLOORHEADER WHERE (posted = 1 OR posted = 0)  AND workCenter = '$workCenter' ORDER BY docEntry DESC" );
 		// $query = $this->db->query("SELECT * FROM STEM_MOBILE_SHOPFLOORHEADER WHERE posted = '0' AND workCenter = '$workCenter' ORDER BY docEntry DESC" );
 		 // return $this->db->get('IPP_MOBILE_SHOPFLOORHEADER')->result_array();
 		return $query->result_array();
@@ -29,6 +29,10 @@ function putHeader($data, $docEntry) {
 	// $this->db->replace('IPP_MOBILE_SHOPFLOORHEADER', $data,['id'=> $id]);
 	// $this->db->set('')
 	return $this->db->affected_rows();
+}
+
+function deleteHeader($docEntry) {
+	$this->db->query("DELETE FROM IPP_MOBILE_SHOPFLOORHEADER WHERE docEntry = '".$docEntry."'");
 }
 
 }
